@@ -1,0 +1,31 @@
+header {
+  background-color: rgb(199, 222, 252);
+  display: flex;
+  width: 100vw;
+  height: 6vh;
+  /* justify-content: start; */
+  align-items: center;
+}
+.heading {
+  color: black;
+  font-size: xx-large;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  margin-left: 1.5rem;
+  cursor: pointer;
+}
+
+.login_logout {
+  right: 0;
+  background-color: hsl(241, 72%, 34%);
+  padding: 8px;
+  border-radius: 15px;
+  position: absolute;
+  margin-right: 2rem;
+  cursor: pointer;
+  color: aliceblue;
+  font-weight: 800;
+  font-style: oblique;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
