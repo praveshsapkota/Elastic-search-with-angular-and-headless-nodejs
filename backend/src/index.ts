@@ -5,6 +5,9 @@ import jwt from "jsonwebtoken"
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
 import { verifyToken } from "./auth"
+import axios from "axios"
+
+
 dotenv.config();
 const StaticUsers = [
     {
@@ -84,16 +87,33 @@ app.post('/api/login', async (req, res) => {
     }
 })
 
-app.get('/api/search', async (req, res, next) => {
+const omdb_api = process.env.OMDB_API
+const omdb_api_key = process.env.OMDB_API_KEY
+const omdb_poster_api = process.env.OMDB_Poster_API
+
+app.get('/api/search', verifyToken, async (req, res) => {
     const access_token = req.headers.authorization as string || '';
-    const title = req.query.title;
+    const title: string = req.query.title as string || '';
     // console.log(req.headers)
     if (!access_token) {
         return res.status(403).send("A must login to preform search");
     }
-    await verifyToken({ req, res, next });
+    const search_url = `${omdb_api}?apikey=${omdb_api_key}&s=${title}`
+    const response = await axios.get(search_url)
+    if (response.data) {
+        return res.json(response.data).status(200)
+    }
+    console.log("dsds")
+    res.send("movie not found").status(404)
 
-    res.send(title).status(200)
+    //     await axios.get(search_url).then((data) => {
+    //     console.log(data.data)
+    //     return res.json(JSON.stringify(data.data)).status(200);
+    // }).catch((err) => {
+    //     console.log(err);
+    //     // return res.status(200).send(err)
+    // })
+
 })
 
 app.listen(process.env.PORT || 3000, () => {

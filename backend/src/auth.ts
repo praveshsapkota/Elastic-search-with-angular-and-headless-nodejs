@@ -1,16 +1,16 @@
-const jwt = require("jsonwebtoken");
+import { NextFunction, Request, Response } from "express";
+import jwt from "jsonwebtoken"
 
-const config = process.env;
 
-export const verifyToken = ({ req, res, next }: any) => {
-    const authorizationHeader: string = req.headers.authorization;
+export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
+    const authorizationHeader: string = req.headers.authorization || '';
     const token = authorizationHeader.split(" ")[1];
     if (!token) {
         return res.status(403).send("please preform login ! you dont have access token");
     }
     try {
-        const decoded = jwt.verify(token, config.JWT_SECRET_KEY);
-        req.user = decoded;
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY || '');
+        // req.user = decoded;
     } catch (err) {
         return res.status(401).send("Invalid Token");
     }
