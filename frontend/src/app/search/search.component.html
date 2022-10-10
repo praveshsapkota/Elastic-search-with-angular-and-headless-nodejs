@@ -1,0 +1,38 @@
+<div class="mainContainer">
+  <div class="searchContainer">
+    <span class="searchText">Search</span>
+    <input name="search" [formControl]="search" class="searchBar" type="text" />
+    <fa-icon
+      class="searchButton"
+      (click)="onSubmit()"
+      [icon]="searchButton"
+    ></fa-icon>
+  </div>
+  <div class="container">
+    <div
+      class="MainCardContainer grid grid-cols-2 md:grid-cols-3 grid-flow-row gap-10"
+    >
+      <div *ngFor="let item of searchResponse">
+        <mat-card class="CardContainer">
+          <img class="CardImage" [src]="item.Poster" alt="" />
+          <span class="CardID">IMDB Id : {{ item.imdbID }}</span>
+          <div class="cardTitles">
+            <div class="flex">
+              <span class="font-thin">Title</span>
+              <span class="font-mono font-bold">:{{ " " + item.Title }}</span>
+            </div>
+
+            <div class="flex">
+              <span class="font-thin">Release year </span>
+              <span class="font-mono font-bold">:{{ " " + item.Year }}</span>
+            </div>
+            <div class="flex">
+              <span class="font-thin">Type</span>
+              <span class="font-mono font-bold">:{{ " " + item.Type }}</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

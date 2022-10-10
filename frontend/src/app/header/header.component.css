@@ -1,5 +1,5 @@
 header {
-  background-color: rgb(199, 222, 252);
+  background-color: rgb(254, 254, 254);
   display: flex;
   width: 100vw;
   height: 6vh;
@@ -7,20 +7,23 @@ header {
   align-items: center;
 }
 .heading {
-  color: black;
-  font-size: xx-large;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  text-align: center;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
+  padding: 2px;
   cursor: pointer;
+  height: 35px;
+  object-fit: fill;
+  text-align: center;
+}
+.logoContainer {
+  display: flex;
+  place-content: center flex-start;
+  align-items: center;
 }
 
 .login_logout {
-  right: 0;
-  background-color: hsl(241, 72%, 34%);
-  padding: 8px;
+  background-color: hsl(231, 61%, 47%);
+  padding: 5px 15px 5px 15px;
   border-radius: 15px;
-  position: absolute;
   margin-right: 2rem;
   cursor: pointer;
   color: aliceblue;
@@ -28,4 +31,23 @@ header {
   font-style: oblique;
   letter-spacing: 1px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.SearchButton {
+  background-color: hsl(231, 61%, 47%);
+  padding: 5px 15px 5px 15px;
+  border-radius: 15px;
+  /* position: absolute; */
+  margin-right: 2rem;
+  cursor: pointer;
+  color: aliceblue;
+  font-weight: 800;
+  font-style: oblique;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.buttonContainer {
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: auto;
 }

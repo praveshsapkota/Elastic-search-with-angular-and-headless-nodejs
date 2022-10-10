@@ -1,0 +1,82 @@
+.searchContainer {
+  width: 70vw;
+  max-width: 600px;
+  height: 4vh;
+  max-height: 80px;
+  min-height: 15px;
+  display: flex;
+  background-color: rgb(196, 201, 196);
+  justify-content: space-around;
+  border-radius: 15px;
+  margin-top: 2rem;
+  text-align: center;
+  align-items: center;
+  border: 2px solid rgb(82, 208, 60);
+}
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+.searchText {
+  margin-left: 10px;
+  text-align: center;
+  color: hsl(231, 70%, 50%);
+  font-weight: 600;
+  word-spacing: 1px;
+  font-size: larger;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.searchBar {
+  outline: none;
+  border: none;
+  width: 70%;
+  max-height: 2rem;
+  min-width: 5rem;
+  min-height: 28px;
+  max-width: 80vw;
+  border-radius: 15px;
+  padding-left: 8px;
+}
+.searchButton {
+  margin-right: 3px;
+  background-color: rgb(188, 188, 188);
+  padding: 2px 5px 2px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.CardContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  width: 17rem;
+  height: 23rem;
+}
+.CardImage {
+  height: 15rem;
+  width: 15rem;
+}
+.cardTitles {
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.CardTitle {
+  font-weight: 200;
+}
+.CardID {
+  font-weight: 100;
+  font-size: small;
+  margin-top: 1rem;
+}
+.MainCardContainer {
+  margin-top: 3rem;
+}
+.container {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}

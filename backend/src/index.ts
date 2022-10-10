@@ -6,6 +6,7 @@ import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
 import { verifyToken } from "./auth"
 import axios from "axios"
+import cors from "cors"
 
 
 dotenv.config();
@@ -28,7 +29,10 @@ const StaticUsers = [
 ]
 
 const app = express();
-
+app.use(cors({
+    origin: 'http://localhost:4200',
+    credentials: true
+}))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -71,6 +75,14 @@ app.post('/api/login', async (req, res) => {
                                     expiresIn: "2h"
                                 }
                             )
+                            res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+
+                            res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+
+                            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+                            res.setHeader('Access-Control-Allow-Credentials', 'true');
+
                             return res.cookie("jwt_access_token", token, {
                                 httpOnly: true,
                                 secure: true
@@ -94,25 +106,17 @@ const omdb_poster_api = process.env.OMDB_Poster_API
 app.get('/api/search', verifyToken, async (req, res) => {
     const access_token = req.headers.authorization as string || '';
     const title: string = req.query.title as string || '';
-    // console.log(req.headers)
     if (!access_token) {
         return res.status(403).send("A must login to preform search");
     }
     const search_url = `${omdb_api}?apikey=${omdb_api_key}&s=${title}`
+    console.log(search_url)
+    // const search_url = `${omdb_api}?s=${title}&apikey=${omdb_api_key}&`
     const response = await axios.get(search_url)
     if (response.data) {
         return res.json(response.data).status(200)
     }
-    console.log("dsds")
     res.send("movie not found").status(404)
-
-    //     await axios.get(search_url).then((data) => {
-    //     console.log(data.data)
-    //     return res.json(JSON.stringify(data.data)).status(200);
-    // }).catch((err) => {
-    //     console.log(err);
-    //     // return res.status(200).send(err)
-    // })
 
 })
 

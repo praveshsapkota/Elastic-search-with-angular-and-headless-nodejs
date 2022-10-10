@@ -16,6 +16,7 @@
 .loginButton {
   margin-top: 2px;
   display: flex;
+  /* background-color: hsl(202, 61%, 47%); */
   justify-content: center;
 }
 .loginText {
@@ -23,4 +24,9 @@
   font-weight: 700;
   padding-bottom: 2rem;
   font-family: monospace;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

@@ -10,13 +10,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from "@angular/material/form-field"
 import { MatButtonModule } from '@angular/material/button';
-
+import { SearchComponent } from './search/search.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from "ngx-cookie-service"
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginFormComponent,
     HeaderComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,9 +35,16 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatCardModule,
+    NgxPaginationModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,15 @@
-<header >
-    <div (click)="Home();" class="heading">Full stack assignment</div>
-    <div  (click)="OnClick();"  class="login_logout">Login</div>
+<header>
+  <div (click)="Home()" class="logoContainer">
+    <img src="/assets/whydonate.png" alt="why donate" class="heading" />
+  </div>
+  <div class="buttonContainer">
+    <div (click)="Search()" class="SearchButton">Search</div>
+    <div *ngIf="isLoggedIn(); else logoutBlock" class="login_logout">
+      <div (click)="deleteCookie()">Logout</div>
+    </div>
+    <ng-template #logoutBlock>
+      <div (click)="OnClick()" class="login_logout">Login</div>
+    </ng-template>
+  </div>
+  <hr />
 </header>
